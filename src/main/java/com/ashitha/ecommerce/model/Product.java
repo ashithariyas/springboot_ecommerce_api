@@ -43,10 +43,10 @@ public class Product {
 	private int quantity;
 	
 	@Column(name="brand")
-	private int brand;
+	private String brand;
 	
 	@Column(name="color")
-	private int color;
+	private String color;
 	
 	@Embedded
 	@ElementCollection
@@ -76,7 +76,7 @@ public class Product {
 	}
 
 	public Product(Long id, String title, String description, int price, int discountPrice, int discountpercent,
-			int quantity, int brand, int color, Set<Size> sizes, String imageUrl, List<Rating> ratings,
+			int quantity, String brand, String color, Set<Size> sizes, String imageUrl, List<Rating> ratings,
 			List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
 		super();
 		this.id = id;
@@ -153,19 +153,19 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public int getBrand() {
+	public String getBrand() {
 		return brand;
 	}
 
-	public void setBrand(int brand) {
+	public void setBrand(String brand) {
 		this.brand = brand;
 	}
 
-	public int getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(int color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 

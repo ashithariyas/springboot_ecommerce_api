@@ -3,10 +3,15 @@ package com.ashitha.ecommerce.model;
 import java.time.LocalDate;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Embeddable
 public class PaymentInformation {
 
-	
 	@Column(name="cardholder_name")
 	private String cardholderName;
 	
@@ -23,19 +28,13 @@ public class PaymentInformation {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	
-	public PaymentInformation(String cardholderName, String cardNumber, LocalDate expirationDate, String cvv) {
+	public PaymentInformation(Long id, String cardholderName, String cardNumber, LocalDate expirationDate, String cvv) {
 		super();
 		this.cardholderName = cardholderName;
 		this.cardNumber = cardNumber;
 		this.expirationDate = expirationDate;
 		this.cvv = cvv;
 	}
-
-
-
 
 	public String getCardholderName() {
 		return cardholderName;
@@ -68,6 +67,4 @@ public class PaymentInformation {
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-	
-	
 }
