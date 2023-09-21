@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
 	public User findUserProfieByJwt(String jwt) throws UserException {
 		
 		String email=jwtProvider.getEmailFromToken(jwt);
+	
 		User user=userRepository.findByEmail(email);
 		
 		if(user==null) {

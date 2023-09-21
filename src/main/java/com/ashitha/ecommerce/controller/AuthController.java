@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ashitha.ecommerce.config.JwtProvider;
 import com.ashitha.ecommerce.exception.UserException;
+import com.ashitha.ecommerce.model.Cart;
 import com.ashitha.ecommerce.model.User;
 import com.ashitha.ecommerce.repository.UserRepository;
 import com.ashitha.ecommerce.request.LoginRequest;
 import com.ashitha.ecommerce.response.AuthResponse;
+import com.ashitha.ecommerce.service.CartService;
 import com.ashitha.ecommerce.service.CustomUserServiceImpl;
 
 @RestController
@@ -35,6 +37,9 @@ public class AuthController {
 
 	@Autowired
 	private CustomUserServiceImpl customUserService;
+	
+	@Autowired
+	private CartService cartService;
 
 	@PostMapping("/signup")
 	public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws UserException {
@@ -57,6 +62,7 @@ public class AuthController {
 		createdUser.setLastName(lastNameString);
 
 		User savedUser = userRepository.save(createdUser);
+		Cart cart=cartService.createCart(savedUser);
 
 		Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
 				savedUser.getPassword());

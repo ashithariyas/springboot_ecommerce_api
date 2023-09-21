@@ -1,4 +1,4 @@
-package com.ashitha.ecommerce.config;
+package com.ashitha.ecommerce.controller;
 
 import java.util.List;
 

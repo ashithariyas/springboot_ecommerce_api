@@ -9,7 +9,7 @@ import com.ashitha.ecommerce.model.Address;
 import com.ashitha.ecommerce.model.Orders;
 import com.ashitha.ecommerce.model.User;
 
-@Service
+
 public interface OrderService {
 	
 	

@@ -17,6 +17,7 @@ public class JwtProvider {
 	
 	public String generateToken(Authentication auth) {
 		String jwt=Jwts.builder()
+				.setHeaderParam("typ","JWT")
 				.setIssuedAt(new Date())
 				.setExpiration(new Date(new Date().getTime()+846000000))
 				.claim("email", auth.getName())
@@ -29,11 +30,10 @@ public class JwtProvider {
 	public String getEmailFromToken(String jwt) {
 		jwt=jwt.substring(7);
 		
-		Claims claims=Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJwt(jwt).getBody();
+		Claims claims=Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
 		
 		String email=String.valueOf(claims.get("email"));
 		
-		return email;
-		
+		return email;		
 	}
 }

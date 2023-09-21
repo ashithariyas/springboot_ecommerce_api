@@ -47,7 +47,8 @@ public class ProductServiceImpl implements ProductService {
 
 		if (secondLevel == null) {
 			Category secondLevelCategory = new Category();
-			secondLevelCategory.setName(req.getTopLevelCategory());
+			secondLevelCategory.setName(req.getSecondLevelCategory());
+			secondLevelCategory.setParentCategory(topLevel);
 			secondLevelCategory.setLevel(2);
 			secondLevel = categoryRepository.save(secondLevelCategory);
 		}
@@ -57,7 +58,8 @@ public class ProductServiceImpl implements ProductService {
 
 		if (thirdLevel == null) {
 			Category thirdLevelCategory = new Category();
-			thirdLevelCategory.setName(req.getTopLevelCategory());
+			thirdLevelCategory.setName(req.getThirdLevelCategory());
+			thirdLevelCategory.setParentCategory(secondLevel);
 			thirdLevelCategory.setLevel(3);
 			secondLevel = categoryRepository.save(thirdLevelCategory);
 		}
